@@ -20,6 +20,6 @@ public class Player : MonoBehaviour
     void Update()
     {
         spaceship.PointClick();
-        spaceship.Rotation();
+        //spaceship.Rotation();
     }
 }
