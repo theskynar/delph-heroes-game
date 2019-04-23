@@ -1,1 +1,1 @@
-# delph-heroes-game
+# game-project
