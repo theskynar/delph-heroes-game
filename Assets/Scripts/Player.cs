@@ -4,22 +4,32 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    Spaceship spaceship;
+    Character character;
+    public HealthSystem healthSystem;
 
-    IEnumerator Start()
+    void Start()
     {
-        spaceship = GetComponent<Spaceship>();
+        character = GetComponent<Character>();
 
-        while (true)
-        {
-            spaceship.Shot(transform);
-            yield return new WaitForSeconds(0.1f);
-        }
+        healthSystem = new HealthSystem(100);
     }
 
     void Update()
     {
-        spaceship.PointClick();
-        //spaceship.Rotation();
+        character.PointClick();
+        character.Rotation();
+    }
+
+    public void DamageTaken(int damage)
+    {
+
+        if (healthSystem.GetHealth() == 0)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            healthSystem.Damage(damage);
+        }
     }
 }

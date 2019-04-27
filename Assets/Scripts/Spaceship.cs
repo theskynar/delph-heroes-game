@@ -30,23 +30,31 @@ public class Spaceship : MonoBehaviour
         if (transform.position.x < targetPosition.x)
         {
             animator.SetFloat("Horizontal", 1);
-            animator.SetFloat("Vertical", 0);
             animator.SetFloat("Magnitude", 1);
-        } else if (transform.position.x > targetPosition.x)
+        }
+        else if (transform.position.x > targetPosition.x)
         {
             animator.SetFloat("Horizontal", -1);
-            animator.SetFloat("Vertical", 0);
             animator.SetFloat("Magnitude", 1);
-        } else if (transform.position.y < targetPosition.y)
+        }
+        else
         {
-            animator.SetFloat("Horizontal", 0);
+            animator.SetFloat("Magnitude", 0);
+        }
+
+        if (transform.position.y < targetPosition.y)
+        {
             animator.SetFloat("Vertical", 1);
             animator.SetFloat("Magnitude", 1);
-        } else if (transform.position.y > targetPosition.y)
+        }
+        else if (transform.position.y > targetPosition.y)
         {
-            animator.SetFloat("Horizontal", 0);
             animator.SetFloat("Vertical", -1);
             animator.SetFloat("Magnitude", 1);
+        }
+        else
+        {
+            animator.SetFloat("Magnitude", 0);
         }
 
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * speed);
