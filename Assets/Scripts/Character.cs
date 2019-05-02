@@ -11,6 +11,23 @@ public class Character : MonoBehaviour
     public Vector3 position = new Vector3();
     public float speed = 2.0f;
     public HealthSystem healthSystem;
+    public float shotDelay;
+    public GameObject bullet;
+
+    public void Shot(Transform origin)
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            Debug.Log("atirou");
+
+            var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Quaternion rot = Quaternion.LookRotation(transform.position - mousePosition, Vector3.forward);
+
+            transform.rotation = rot;
+
+            Instantiate(bullet, origin.position, rot);
+        }
+    }
 
     public void PointClick()
     {

@@ -7,11 +7,17 @@ public class Player : MonoBehaviour
     Character character;
     public HealthSystem healthSystem;
 
-    void Start()
+    IEnumerator Start()
     {
         character = GetComponent<Character>();
 
         healthSystem = new HealthSystem(100);
+
+        while (true)
+        {
+            character.Shot(transform);
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 
     void Update()
