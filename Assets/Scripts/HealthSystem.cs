@@ -10,6 +10,7 @@ public class HealthSystem {
     {
         this.health = health;
         health = healthMax;
+
     }
 
     public int GetHealth()
@@ -22,9 +23,6 @@ public class HealthSystem {
         health -= damageAmount;
         if (health < 0) health = 0;
 
-        hpBar = GameObject.Find("HpBar");
-        var image = hpBar.GetComponent<Image>();
-        image.fillAmount = 100 / health;
     }
 
     public void Heal(int healAmount)
