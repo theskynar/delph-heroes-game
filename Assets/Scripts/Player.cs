@@ -23,10 +23,11 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         character.PointClick();
         character.Rotation();
+        character.Move();
 
         hpBar = GameObject.Find("HpBar");
         var image = hpBar.GetComponent<Image>();

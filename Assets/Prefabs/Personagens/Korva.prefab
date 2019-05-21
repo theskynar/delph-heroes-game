@@ -12,16 +12,16 @@ GameObject:
   - component: {fileID: 1033447895097891143}
   - component: {fileID: 1033447895097891142}
   - component: {fileID: 1033447895097891140}
-  - component: {fileID: 1033447895097891141}
   - component: {fileID: 1033447895097891147}
   - component: {fileID: 1033447895097891137}
+  - component: {fileID: 8915634293552284945}
   m_Layer: 0
   m_Name: Korva
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1033447895097891136
 Transform:
   m_ObjectHideFlags: 0
@@ -123,33 +123,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &1033447895097891141
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1033447895097891146}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0017208029, y: -0.041577756}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.17, y: 0.28}
-    newSize: {x: 0.17, y: 0.3}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.09745312, y: 0.2168445}
-  m_EdgeRadius: 0
+  m_Constraints: 4
 --- !u!114 &1033447895097891147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,4 +152,23 @@ MonoBehaviour:
   target: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 0}
   position: {x: 0, y: 0, z: 0}
-  speed: 2
+  speed: 1
+  shotDelay: 0
+  bullet: {fileID: 7762710889228794420, guid: 2e2b28a6323bef34b944f1079bd8070e, type: 3}
+  rb: {fileID: 1033447895097891140}
+--- !u!58 &8915634293552284945
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033447895097891146}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.1}
+  serializedVersion: 2
+  m_Radius: 0.04

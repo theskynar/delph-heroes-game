@@ -13,6 +13,12 @@ public class Character : MonoBehaviour
     public HealthSystem healthSystem;
     public float shotDelay;
     public GameObject bullet;
+    public Rigidbody2D rb;
+
+    public void Move()
+    {
+        rb.velocity = new Vector2(direction.x, direction.y);
+    }
 
     public void Shot(Transform origin)
     {
@@ -32,6 +38,8 @@ public class Character : MonoBehaviour
     public void PointClick()
     {
         animator = gameObject.GetComponent<Animator>();
+
+        
 
         position = gameObject.transform.position;
         if (Input.GetKey(KeyCode.Mouse0))
