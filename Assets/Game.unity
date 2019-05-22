@@ -629,7 +629,19 @@ PrefabInstance:
         type: 3}
       propertyPath: bullet
       value: 
+      objectReference: {fileID: 1568711714316788, guid: 2cdcb95f8ec1fd04cb092193585c854a,
+        type: 3}
+    - target: {fileID: 45258470828423895, guid: cba59d541b0c5a440b515b6eea84056f,
+        type: 3}
+      propertyPath: firstSkill
+      value: 
       objectReference: {fileID: 1979048356021752, guid: d82846700d83cc34eb745126e8de58a6,
+        type: 3}
+    - target: {fileID: 45258470828423895, guid: cba59d541b0c5a440b515b6eea84056f,
+        type: 3}
+      propertyPath: secondSkill
+      value: 
+      objectReference: {fileID: 1568711714316788, guid: 2cdcb95f8ec1fd04cb092193585c854a,
         type: 3}
     - target: {fileID: 45258470828423901, guid: cba59d541b0c5a440b515b6eea84056f,
         type: 3}
@@ -637,6 +649,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1979048356021752, guid: d82846700d83cc34eb745126e8de58a6,
         type: 3}
+    - target: {fileID: 45258470828423896, guid: cba59d541b0c5a440b515b6eea84056f,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cba59d541b0c5a440b515b6eea84056f, type: 3}
 --- !u!1 &597761636
