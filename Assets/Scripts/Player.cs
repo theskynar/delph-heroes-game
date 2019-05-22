@@ -8,23 +8,24 @@ public class Player : MonoBehaviour
     Character character;
     public HealthSystem healthSystem;
     private GameObject hpBar;
+    public GameObject bullet;
 
-    IEnumerator Start()
+    void Start()
     {
         character = GetComponent<Character>();
 
         healthSystem = new HealthSystem(100);
-        
-
-        while (true)
-        {
-            character.Shot(transform);
-            yield return new WaitForSeconds(0.1f);
-        }
     }
 
     void FixedUpdate()
     {
+        if (Input.GetKey(KeyCode.Q))
+        {
+            var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Quaternion rot = Quaternion.LookRotation(transform.position - mousePosition, Vector3.forward);
+            GameObject objeto = Instantiate(bullet, transform.position, rot) as GameObject;
+            
+        }
         character.PointClick();
         character.Rotation();
         character.Move();
@@ -34,8 +35,6 @@ public class Player : MonoBehaviour
         var currHealth = (float) healthSystem.GetHealth();
         var health =  (currHealth / 100.0f);
         image.fillAmount = health;
-
-        Debug.Log("vida: " + health);
     }
 
     public void DamageTaken(int damage)

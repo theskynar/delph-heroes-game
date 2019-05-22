@@ -14,6 +14,9 @@ public class Character : MonoBehaviour
     public float shotDelay;
     public GameObject bullet;
     public Rigidbody2D rb;
+    
+
+    
 
     public void Move()
     {
@@ -22,16 +25,15 @@ public class Character : MonoBehaviour
 
     public void Shot(Transform origin)
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Q))
         {
             Debug.Log("atirou");
 
             var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Quaternion rot = Quaternion.LookRotation(transform.position - mousePosition, Vector3.forward);
-
             transform.rotation = rot;
-
-            Instantiate(bullet, origin.position, rot);
+            GameObject InstantiatedGameObject = Instantiate(bullet, origin.position, rot);
+            InstantiatedGameObject.transform.SetParent(origin);
         }
     }
 
