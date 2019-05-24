@@ -13,10 +13,7 @@ public class Character : MonoBehaviour
     public HealthSystem healthSystem;
     public float shotDelay;
     public GameObject bullet;
-    public Rigidbody2D rb;
-    
-
-    
+    public Rigidbody2D rb; 
 
     public void Move()
     {
@@ -41,8 +38,6 @@ public class Character : MonoBehaviour
     {
         animator = gameObject.GetComponent<Animator>();
 
-        
-
         position = gameObject.transform.position;
         if (Input.GetKey(KeyCode.Mouse0))
         {
@@ -62,6 +57,8 @@ public class Character : MonoBehaviour
             direction = Vector3.zero;
             animator.SetFloat("Magnitude", 0);
         }
+
+        GameState.instance.emitPlayerPositionChange(new Vector2(target.x, target.y));
     }
 
     public void Rotation()

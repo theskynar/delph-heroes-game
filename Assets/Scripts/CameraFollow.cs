@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
@@ -9,10 +7,8 @@ public class CameraFollow : MonoBehaviour
 
     private void Start()
     {
-        string name = PlayerPrefs.GetString("CharacterName");
-        Debug.Log("NOme: " + name);
 
-        player = GameObject.Find(name);
+        player = GameObject.Find(GameState.instance.playerName);
     }
 
     void LateUpdate()

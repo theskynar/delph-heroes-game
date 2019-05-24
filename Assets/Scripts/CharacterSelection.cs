@@ -4,23 +4,98 @@ using UnityEngine;
 
 public class CharacterSelection : MonoBehaviour
 {
-    private GameObject[] characterList;
+    private PlayerInformations info;
+    public GameObject berry;
+    public GameObject cyrus;
+    public GameObject lezo;
+    public GameObject korva;
+    public GameObject roann;
+    public GameObject stokv;
+
     private int index;
 
-    private void Start()
+    private void Awake()
     {
-        index = PlayerPrefs.GetInt("CharacterSelected");
-
-        characterList = new GameObject[transform.childCount];
+        info = GameState.instance.info;
         
-        for(int i = 0; i < transform.childCount; i++)
-            characterList[i] = transform.GetChild(i).gameObject;
+        foreach (var item in info.one)
+        {
+            if (item.hero == "berry")
+            {
+                GameObject player = Instantiate(berry, new Vector3(-10.75f, -15.65f, 0), Quaternion.identity);
+                player.SetActive(true);
+                player.name = item.name;
+            }
+            else if (item.hero == "cyrus")
+            {
+                GameObject player = Instantiate(cyrus, new Vector3(-10.25f, -15.65f, 0), Quaternion.identity);
+                player.SetActive(true);
+                player.name = item.name;
+            }
+            else if (item.hero == "lezo")
+            {
+                GameObject player = Instantiate(lezo, new Vector3(-11.25f, -15.65f, 0), Quaternion.identity);
+                player.SetActive(true);
+                player.name = item.name;
+            }
+            else if (item.hero == "korva")
+            {
+                GameObject player = Instantiate(korva, new Vector3(-10.75f, -16.65f, 0), Quaternion.identity);
+                player.SetActive(true);
+                player.name = item.name;
+            }
+            else if (item.hero == "roann")
+            {
+                GameObject player = Instantiate(roann, new Vector3(-11.25f, -16.65f, 0), Quaternion.identity);
+                player.SetActive(true);
+                player.name = item.name;
+            }
+            else if (item.hero == "stokv")
+            {
+                GameObject player = Instantiate(stokv, new Vector3(-10.75f, -14.65f, 0), Quaternion.identity);
+                player.SetActive(true);
+                player.name = item.name;
+            }
+        }
 
-        foreach (GameObject go in characterList)
-            go.SetActive(false);
-
-        if (characterList[index])
-            characterList[index].SetActive(true);
-        
+        foreach (var item in info.two)
+        {
+            if (item.hero == "berry")
+            {
+                GameObject player = Instantiate(berry, new Vector3(13.75f, -1.5f, 0), Quaternion.identity);
+                player.SetActive(true);
+                player.name = item.name;
+            }
+            else if (item.hero == "cyrus")
+            {
+                GameObject player = Instantiate(cyrus, new Vector3(13.25f, -1.5f, 0), Quaternion.identity);
+                player.SetActive(true);
+                player.name = item.name;
+            }
+            else if (item.hero == "lezo")
+            {
+                GameObject player = Instantiate(lezo, new Vector3(13.75f, -2.25f, 0), Quaternion.identity);
+                player.SetActive(true);
+                player.name = item.name;
+            }
+            else if (item.hero == "korva")
+            {
+                GameObject player = Instantiate(korva, new Vector3(12.75f, -1.5f, 0), Quaternion.identity);
+                player.SetActive(true);
+                player.name = item.name;
+            }
+            else if (item.hero == "roann")
+            {
+                GameObject player = Instantiate(roann, new Vector3(12.75f, -2.25f, 0), Quaternion.identity);
+                player.SetActive(true);
+                player.name = item.name;
+            }
+            else if (item.hero == "stokv")
+            {
+                GameObject player = Instantiate(stokv, new Vector3(12.75f, -1.0f, 0), Quaternion.identity);
+                player.SetActive(true);
+                player.name = item.name;
+            }
+        }
     }
 }
