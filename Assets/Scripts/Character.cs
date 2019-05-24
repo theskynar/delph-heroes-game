@@ -13,7 +13,28 @@ public class Character : MonoBehaviour
     public HealthSystem healthSystem;
     public float shotDelay;
     public GameObject bullet;
-    public Rigidbody2D rb; 
+    public Rigidbody2D rb;
+    private bool collided;
+
+    private void OnTriggerEnter2D(Collision co)
+    {
+        if (co.gameObject.tag != "Bullet")
+        {
+            collided = true;
+            Debug.Log("Colidiu");
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Player enemy = other.gameObject.GetComponent<Player>();
+
+        if (enemy != null)
+        {
+            enemy.DamageTaken(5);
+        }
+
+    }
 
     public void Move()
     {
@@ -58,7 +79,7 @@ public class Character : MonoBehaviour
             animator.SetFloat("Magnitude", 0);
         }
 
-        GameState.instance.emitPlayerPositionChange(new Vector2(target.x, target.y));
+        //GameState.instance.emitPlayerPositionChange(new Vector2(target.x, target.y));
     }
 
     public void Rotation()

@@ -33,7 +33,7 @@ namespace GAP_ParticleSystemController{
 	[ExecuteInEditMode]
 	public class ParticleSystemController : MonoBehaviour {
 
-		public float size = 1;
+		public float size = 0;
 		public float speed = 1;
 		public float duration = 1;
 		public bool loop;

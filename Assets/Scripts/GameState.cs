@@ -85,10 +85,10 @@ public class GameState : MonoBehaviour
         io.Emit("name", JsonUtility.ToJson(message));
     }
 
-    public void emitPlayerPositionChange(Vector2 position)
-    {
-        io.Emit("player-position-change", JsonUtility.ToJson(position));
-    }
+    //public void emitPlayerPositionChange(Vector2 position)
+    //{
+    //    io.Emit("player-position-change", JsonUtility.ToJson(position));
+    //}
 }
 
 [Serializable]

@@ -8,8 +8,6 @@ public class Player : MonoBehaviour
     Character character;
     public HealthSystem healthSystem;
     private GameObject hpBar;
-    public GameObject firstSkill;
-    public GameObject secondSkill;
 
     void Start()
     {
@@ -20,23 +18,6 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.Q))
-        {
-            var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Quaternion rot = Quaternion.LookRotation(mousePosition - transform.position, Vector3.forward);
-            
-            GameObject objeto = Instantiate(firstSkill, transform.position, rot) as GameObject;
-            objeto.GetComponent<Rigidbody>().AddForce(Vector3.forward * 100);
-        }
-
-        if (Input.GetKey(KeyCode.W))
-        {
-            var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Quaternion rot = Quaternion.LookRotation(mousePosition - transform.position, Vector3.forward);
-
-            GameObject objeto = Instantiate(secondSkill, transform.position, rot) as GameObject;
-            objeto.GetComponent<Rigidbody>().AddForce(Vector3.forward * 100);
-        }
         character.PointClick();
         character.Rotation();
         character.Move();
