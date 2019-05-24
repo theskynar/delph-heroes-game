@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 45258470828423895}
   - component: {fileID: 45258470828423901}
   - component: {fileID: 1146979683}
+  - component: {fileID: 5709689353279385915}
   m_Layer: 0
   m_Name: Berry
   m_TagString: Untagged
@@ -172,3 +173,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.1}
   serializedVersion: 2
   m_Radius: 0.04
+--- !u!114 &5709689353279385915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45258470828423894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2eb83ec655d71b498b43c9ebccd8066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  use2D: 0
+  effectName: {fileID: 0}
+  firePoint: {fileID: 45258470828423894}
+  cameras: {fileID: 6104306585651812400, guid: bb93dc98ee8303147848109911f10da7, type: 3}
+  VFXs:
+  - {fileID: 1979048356021752, guid: d82846700d83cc34eb745126e8de58a6, type: 3}
+  - {fileID: 1574670682615188, guid: 1082783949a45e444b522891f3be173a, type: 3}

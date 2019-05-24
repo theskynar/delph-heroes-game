@@ -76,13 +76,25 @@ public class ProjectileMoveScript : MonoBehaviour {
         if (target != null)
             rotateToMouse.RotateToMouse (gameObject, target.transform.position);
         if (speed != 0 && rb != null)
-			rb.position += (transform.forward + offset) * (speed * Time.deltaTime);        
+			rb.position += (transform.forward + offset) * (speed * Time.deltaTime);
     }
 
-	void OnCollisionEnter (Collision co) {
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Player enemy = other.gameObject.GetComponent<Player>();
+
+        if (enemy != null)
+        {
+            enemy.DamageTaken(5);
+        }
+
+    }
+
+    void OnCollisionEnter (Collision co) {
+
         if (!bounce)
         {
-            if (co.gameObject.tag != "Bullet" && !collided)
+            if (co.gameObject.tag == "Player" && !collided)
             {
                 collided = true;
 
