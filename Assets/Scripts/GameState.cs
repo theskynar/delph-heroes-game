@@ -8,7 +8,8 @@ public class GameState : MonoBehaviour
     public static GameState instance = null;
     public SocketController io;
     public string playerName;
-    public PlayerInformations info;
+    public PlayersInfo playersInfo;
+    public Statitics gameStats;
 
     // Start is called before the first frame update
     void Awake()
@@ -46,8 +47,8 @@ public class GameState : MonoBehaviour
         io.On("game-started", (SocketIOEvent e) =>
         {
             // Parse message
-            GameStartedMessage msg = JsonUtility.FromJson<GameStartedMessage>(e.data);
-            info = msg.playerInfos;
+            GameStarted msg = JsonUtility.FromJson<GameStarted>(e.data);
+            playersInfo = msg.playerInfos;
 
             // Go to game scene
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -60,24 +61,41 @@ public class GameState : MonoBehaviour
             Debug.Log(e);
         });
 
+        io.On("game-players-update", (SocketIOEvent e) =>
+        {
+            PlayersInfo msg = JsonUtility.FromJson<PlayersInfo>(e.data);
+            playersInfo = msg;
+        });
+
+        io.On("game-statistics-update", (SocketIOEvent e) =>
+        {
+            Statitics msg = JsonUtility.FromJson<Statitics>(e.data);
+            gameStats = msg;
+        });
+
+        io.On("player-position-change", (SocketIOEvent e) =>
+        {
+            PositionChange msg = JsonUtility.FromJson<PositionChange>(e.data);
+            Player player = GameObject.Find(msg.playerName).GetComponent<Player>();
+
+            player.character.target.x = msg.position.x;
+            player.character.target.y = msg.position.y;
+            player.character.PointClick(player.specs.name);
+        });
+
         io.Connect();
     }
 
     public void emitLobbyEntered()
     {
-        TextMessage message = new TextMessage()
-        {
-            name = "teste"
-        };
-
-        io.Emit("lobby-entered", JsonUtility.ToJson(message));
+        io.Emit("lobby-entered");
     }
 
     public void emitPlayerName(string name)
     {
         playerName = name;
 
-        TextMessage message = new TextMessage()
+        NameMessage message = new NameMessage()
         {
             name = name
         };
@@ -89,16 +107,9 @@ public class GameState : MonoBehaviour
     {
         io.Emit("player-position-change", JsonUtility.ToJson(position));
     }
-}
 
-[Serializable]
-class GameStartedMessage
-{
-    public Statitics gameStats;
-    public PlayerInformations playerInfos;
-}
+    public void emitUseSkill()
+    {
 
-class TextMessage
-{
-    public string name;
+    }
 }

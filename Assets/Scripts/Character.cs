@@ -6,44 +6,32 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     public Animator animator;
+    public Rigidbody2D rb;
+
+    // Position control
     public Vector3 target = new Vector3();
     public Vector3 direction = new Vector3();
     public Vector3 position = new Vector3();
     public float speed = 2.0f;
-    public HealthSystem healthSystem;
-    public float shotDelay;
-    public GameObject bullet;
-    public Rigidbody2D rb; 
 
     public void Move()
     {
         rb.velocity = new Vector2(direction.x, direction.y);
     }
 
-    public void Shot(Transform origin)
-    {
-        if (Input.GetKey(KeyCode.Q))
-        {
-            Debug.Log("atirou");
-
-            var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Quaternion rot = Quaternion.LookRotation(transform.position - mousePosition, Vector3.forward);
-            transform.rotation = rot;
-            GameObject InstantiatedGameObject = Instantiate(bullet, origin.position, rot);
-            InstantiatedGameObject.transform.SetParent(origin);
-        }
-    }
-
-    public void PointClick()
+    public void PointClick(string name)
     {
         animator = gameObject.GetComponent<Animator>();
-
         position = gameObject.transform.position;
-        if (Input.GetKey(KeyCode.Mouse0))
+
+        if (Input.GetKey(KeyCode.Mouse0) && name == GameState.instance.playerName)
         {
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             target.z = 0;
+
+            GameState.instance.emitPlayerPositionChange(new Vector2(target.x, target.y));
         }
+
         if (target != Vector3.zero && (target - position).magnitude >= .06)
         {
             direction = (target - position).normalized;
@@ -57,8 +45,6 @@ public class Character : MonoBehaviour
             direction = Vector3.zero;
             animator.SetFloat("Magnitude", 0);
         }
-
-        GameState.instance.emitPlayerPositionChange(new Vector2(target.x, target.y));
     }
 
     public void Rotation()

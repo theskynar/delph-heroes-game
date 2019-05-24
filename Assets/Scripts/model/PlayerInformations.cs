@@ -2,19 +2,18 @@
 using UnityEngine;
 
 [Serializable]
-public class PlayerInformations
+public class PlayersInfo
 {
-    public PlayerInfo[] one;
-    public PlayerInfo[] two;
+    public PlayerSpecs[] one;
+    public PlayerSpecs[] two;
 }
 
 [Serializable]
-public class PlayerInfo
+public class PlayerSpecs
 {
     public string name;
     public string hero;
     public PlayerAttribute attribute;
-    public Vector2 position;
 
     [Serializable]
     public class PlayerAttribute
