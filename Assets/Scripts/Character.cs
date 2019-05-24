@@ -13,10 +13,6 @@ public class Character : MonoBehaviour
     public Vector3 direction = new Vector3();
     public Vector3 position = new Vector3();
     public float speed = 2.0f;
-    public HealthSystem healthSystem;
-    public float shotDelay;
-    public GameObject bullet;
-    public Rigidbody2D rb;
     private bool collided;
 
     private void OnTriggerEnter2D(Collision co)
@@ -34,9 +30,8 @@ public class Character : MonoBehaviour
 
         if (enemy != null)
         {
-            enemy.DamageTaken(5);
+            Debug.Log("Collded");
         }
-
     }
 
     public void Move()
