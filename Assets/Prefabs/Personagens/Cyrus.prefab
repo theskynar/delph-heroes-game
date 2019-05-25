@@ -198,7 +198,7 @@ MonoBehaviour:
   use2D: 0
   effectName: {fileID: 0}
   firePoint: {fileID: 2122693840517842855}
-  cameras: {fileID: 0}
+  cameras: {fileID: 6104306585651812400, guid: bb93dc98ee8303147848109911f10da7, type: 3}
   VFXs:
   - {fileID: 1881642356963322, guid: f4371fba3cfa5dc438f3935246afee3e, type: 3}
   - {fileID: 1665520805338514, guid: 39f36147c280e9343ba32b265be7fc49, type: 3}
