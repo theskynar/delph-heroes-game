@@ -105,11 +105,11 @@ public class GameState : MonoBehaviour
                 if (item.attribute.life == 0)
                 {
                     diedObjects.Add(item.name, playerObject);
+                    playerObject.transform.position = player.initialPos;
                     playerObject.SetActive(false);
                 }
                 else
                 {
-                    playerObject.transform.position = player.initialPos;
                     playerObject.SetActive(true);
                 }
             }
@@ -128,11 +128,11 @@ public class GameState : MonoBehaviour
                 if (item.attribute.life == 0)
                 {
                     diedObjects.Add(item.name, playerObject);
+                    playerObject.transform.position = player.initialPos;
                     playerObject.SetActive(false);
                 }
                 else
                 {
-                    playerObject.transform.position = player.initialPos;
                     playerObject.SetActive(true);
                 }
             }
