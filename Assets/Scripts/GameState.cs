@@ -109,6 +109,7 @@ public class GameState : MonoBehaviour
                 }
                 else
                 {
+                    playerObject.transform.position = player.initialPos;
                     playerObject.SetActive(true);
                 }
             }
@@ -116,16 +117,23 @@ public class GameState : MonoBehaviour
             foreach (var item in msg.two)
             {
                 var playerObject = GameObject.Find(item.name);
+                if (playerObject == null)
+                {
+                    diedObjects.TryGetValue(item.name, out playerObject);
+                }
+
                 var player = playerObject.GetComponent<Player>();
                 player.specs = item;
 
                 if (item.attribute.life == 0)
                 {
-                    GameObject.Find(item.name).SetActive(false);
+                    diedObjects.Add(item.name, playerObject);
+                    playerObject.SetActive(false);
                 }
                 else
                 {
-                    GameObject.Find(item.name).SetActive(true);
+                    playerObject.transform.position = player.initialPos;
+                    playerObject.SetActive(true);
                 }
             }
 

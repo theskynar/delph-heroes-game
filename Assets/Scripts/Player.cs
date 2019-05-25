@@ -6,9 +6,11 @@ public class Player : MonoBehaviour
     public PlayerSpecs specs;
     public Character character;
     public GameObject hpBar;
+    public Vector3 initialPos;
 
     void Start()
     {
+        initialPos = transform.position;
         character = GetComponent<Character>();
     }
 
