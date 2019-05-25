@@ -49,6 +49,7 @@ public class CharacterSelection : MonoBehaviour
 
             player.SetActive(true);
             player.name = item.name;
+            player.tag = "TeamOne";
             player.GetComponent<Player>().specs = item;
         }
 
@@ -83,6 +84,7 @@ public class CharacterSelection : MonoBehaviour
 
             player.SetActive(true);
             player.name = item.name;
+            player.tag = "TeamTwo";
             player.GetComponent<Player>().specs = item;
         }
     }

@@ -95,10 +95,11 @@ public class ProjectileMoveScript : MonoBehaviour
 
         if (!bounce)
         {
-            if (co.gameObject.tag == "TeamOne" && !collided)
+            var enemyTag = GameState.instance.allyKey == "one" ? "TeamTwo" : "TeamOne";
+            if (co.gameObject.tag == enemyTag && !collided)
             {
+                GameState.instance.emitAttack(co.gameObject.name);
                 collided = true;
-
 
                 if (trails.Count > 0)
                 {
