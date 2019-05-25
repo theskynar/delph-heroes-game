@@ -23,6 +23,7 @@ public class SpawnProjectilesScript : MonoBehaviour
     private GameObject effectToSpawn;
     private List<Camera> camerasList = new List<Camera>();
     private Camera singleCamera;
+    private Player player;
 
     void Start()
     {
@@ -53,27 +54,32 @@ public class SpawnProjectilesScript : MonoBehaviour
             Debug.Log("Please assign one or more VFXs in inspector");
 
         if (effectName != null) effectName.text = effectToSpawn.name;
+
+        player = transform.GetComponent<Player>();
     }
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Q) && Time.time >= timeToFire)
+        if (player.specs.name == GameState.instance.playerName)
         {
-            timeToFire = Time.time + 1f / effectToSpawn.GetComponent<ProjectileMoveScript>().fireRate;
-            effectToSpawn = VFXs[0];
+            if (Input.GetKey(KeyCode.Q) && Time.time >= timeToFire)
+            {
+                timeToFire = Time.time + 1f / effectToSpawn.GetComponent<ProjectileMoveScript>().fireRate;
+                effectToSpawn = VFXs[0];
 
-            var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            GameState.instance.emitUseSkill(0, position);
-            SpawnVFX(position);
-        }
-        else if (Input.GetKey(KeyCode.W) && Time.time >= timeToFire)
-        {
-            timeToFire = Time.time + 1f / effectToSpawn.GetComponent<ProjectileMoveScript>().fireRate;
-            effectToSpawn = VFXs[1];
+                var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                GameState.instance.emitUseSkill(0, position);
+                SpawnVFX(position);
+            }
+            else if (Input.GetKey(KeyCode.W) && Time.time >= timeToFire)
+            {
+                timeToFire = Time.time + 1f / effectToSpawn.GetComponent<ProjectileMoveScript>().fireRate;
+                effectToSpawn = VFXs[1];
 
-            var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            GameState.instance.emitUseSkill(1, position);
-            SpawnVFX(position);
+                var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                GameState.instance.emitUseSkill(1, position);
+                SpawnVFX(position);
+            }
         }
     }
 
