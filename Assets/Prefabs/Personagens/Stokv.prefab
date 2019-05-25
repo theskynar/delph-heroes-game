@@ -15,13 +15,14 @@ GameObject:
   - component: {fileID: 8793546973130075534}
   - component: {fileID: 8793546973130075524}
   - component: {fileID: 7075823863837541144}
+  - component: {fileID: 3148757}
   m_Layer: 0
   m_Name: Stokv
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8793546973130075525
 Transform:
   m_ObjectHideFlags: 0
@@ -136,6 +137,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ba20c804ad22644ad73a9b143d8cbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  specs:
+    name: 
+    hero: 
+    attribute:
+      life: 100
+      originalLife: 100
+      damage: 0
+      criticalRate: 0
+      defense: 0
+      defenseRate: 0
+  character: {fileID: 8793546973130075524}
+  hpBar: {fileID: 0}
 --- !u!114 &8793546973130075524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,13 +162,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8793546973130075523}
+  rb: {fileID: 8793546973130075521}
   target: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 0}
   position: {x: 0, y: 0, z: 0}
   speed: 1
-  shotDelay: 0
-  bullet: {fileID: 7762710889228794420, guid: 2e2b28a6323bef34b944f1079bd8070e, type: 3}
-  rb: {fileID: 8793546973130075521}
 --- !u!58 &7075823863837541144
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -172,3 +183,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.1}
   serializedVersion: 2
   m_Radius: 0.04
+--- !u!114 &3148757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8793546973130075535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2eb83ec655d71b498b43c9ebccd8066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  use2D: 1
+  effectName: {fileID: 0}
+  firePoint: {fileID: 8793546973130075535}
+  cameras: {fileID: 6104306585651812400, guid: bb93dc98ee8303147848109911f10da7, type: 3}
+  VFXs:
+  - {fileID: 1568711714316788, guid: 5fc7dee0a833a0c488c72492a41e375c, type: 3}
+  - {fileID: 1962646870923850, guid: cef58377de7c1cc4c9f60c3560030194, type: 3}
