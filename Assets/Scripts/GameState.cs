@@ -94,20 +94,22 @@ public class GameState : MonoBehaviour
             foreach (var item in msg.one)
             {
                 var playerObject = GameObject.Find(item.name);
+                if (playerObject == null)
+                {
+                    diedObjects.TryGetValue(item.name, out playerObject);
+                }
+
                 var player = playerObject.GetComponent<Player>();
                 player.specs = item;
 
                 if (item.attribute.life == 0)
                 {
-                    diedObjects[item.name] = GameObject.Find(item.name);
-                    diedObjects[item.name].SetActive(false);
+                    diedObjects.Add(item.name, playerObject);
+                    playerObject.SetActive(false);
                 }
                 else
                 {
-                    if (diedObjects[item.name] != null)
-                    {
-                        diedObjects[item.name].SetActive(true);
-                    }
+                    playerObject.SetActive(true);
                 }
             }
 
