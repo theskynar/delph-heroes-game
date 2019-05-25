@@ -87,13 +87,14 @@ public class SpawnProjectilesScript : MonoBehaviour
     {
         GameObject vfx;
         Quaternion rot = Quaternion.LookRotation(position - transform.position, Vector3.forward);
-
+        effectToSpawn.GetComponent<ProjectileMoveScript>().owner = player;
         vfx = Instantiate(effectToSpawn, firePoint.transform.position, rot);
     }
 
     public void SpawnByEvent(Vector3 position, int index)
     {
         effectToSpawn = VFXs[index];
+        effectToSpawn.GetComponent<ProjectileMoveScript>().owner = player;
         GameObject vfx;
 
         Quaternion rot = Quaternion.LookRotation(position - transform.position, Vector3.forward);

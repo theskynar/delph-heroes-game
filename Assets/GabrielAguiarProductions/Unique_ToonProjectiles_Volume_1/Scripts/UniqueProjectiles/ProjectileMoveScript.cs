@@ -21,6 +21,7 @@ public class ProjectileMoveScript : MonoBehaviour
     public GameObject hitPrefab;
     public AudioClip shotSFX;
     public AudioClip hitSFX;
+    public Player owner;
     public List<GameObject> trails;
 
     private Vector3 startPos;
@@ -92,13 +93,12 @@ public class ProjectileMoveScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D co)
     {
-
         if (!bounce)
         {
             var enemyTag = GameState.instance.allyKey == "one" ? "TeamTwo" : "TeamOne";
             if (co.gameObject.tag == enemyTag && !collided)
             {
-                if (GameState.instance.playerName != co.gameObject.name)
+                if (GameState.instance.playerName != owner.specs.name)
                 {
                     GameState.instance.emitAttack(co.gameObject.name);
                 }
