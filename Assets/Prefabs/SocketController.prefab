@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings:
-    url: localhost
-    port: 8080
+    url: bordin-dev.umbler.net
+    port: 80
     sslEnabled: 0
     reconnectTime: 500
     timeToDropAck: 250

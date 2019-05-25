@@ -85,9 +85,8 @@ public class ProjectileMoveScript : MonoBehaviour {
 
         if (enemy != null)
         {
-            enemy.DamageTaken(5);
+            Debug.Log("Collided");
         }
-
     }
 
     void OnCollisionEnter (Collision co) {
