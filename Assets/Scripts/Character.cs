@@ -24,7 +24,7 @@ public class Character : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
         position = gameObject.transform.position;
 
-        if (Input.GetKey(KeyCode.Mouse0) )
+        if (Input.GetKey(KeyCode.Mouse0) && name == GameState.instance.playerName)
         {
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             target.z = 0;
