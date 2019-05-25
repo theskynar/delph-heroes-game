@@ -96,7 +96,7 @@ public class GameState : MonoBehaviour
                 var playerObject = GameObject.Find(item.name);
                 if (playerObject == null)
                 {
-                    diedObjects.TryGetValue(item.name, out playerObject);
+                    diedObjects.TryGetValue(item.name, out playerObject);                  
                 }
 
                 var player = playerObject.GetComponent<Player>();
@@ -111,6 +111,7 @@ public class GameState : MonoBehaviour
                 else
                 {
                     playerObject.SetActive(true);
+                    diedObjects.Remove(item.name);
                 }
             }
 
