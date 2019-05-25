@@ -14462,9 +14462,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bounce: 0
   bounceForce: 10
-  speed: 30
+  speed: 5
   accuracy: 100
-  fireRate: 3
+  fireRate: 2
   muzzlePrefab: {fileID: 1969530967241986, guid: 967aaf1da8de7fb438e16445713fe55f,
     type: 3}
   hitPrefab: {fileID: 1364793100689986, guid: b0a13ceb55e1d134dbde6c0ea9710e7e, type: 3}
