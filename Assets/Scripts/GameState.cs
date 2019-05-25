@@ -9,7 +9,14 @@ public class GameState : MonoBehaviour
     public SocketController io;
     public string playerName;
     public PlayersInfo playersInfo;
+
+    public string allyKey;
     public Statitics gameStats;
+    public Statitics.Team allyStats;
+    public Statitics.Team enemyStats;
+    public Statitics.Player playerStats;
+
+    public DateTime startedAt;
 
     // Start is called before the first frame update
     void Awake()
@@ -46,9 +53,25 @@ public class GameState : MonoBehaviour
 
         io.On("game-started", (SocketIOEvent e) =>
         {
+            startedAt = DateTime.Now;
+
             // Parse message
             GameStarted msg = JsonUtility.FromJson<GameStarted>(e.data);
+            gameStats = msg.gameStats;
             playersInfo = msg.playerInfos;
+
+            // Verify team stats
+            allyKey = "two";
+            foreach (var item in gameStats.one.players)
+            {
+                if (item.name == playerName)
+                {
+                    allyKey = "one";
+                    break;
+                }
+            }
+
+            UpdateStats();
 
             // Go to game scene
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -71,6 +94,8 @@ public class GameState : MonoBehaviour
         {
             Statitics msg = JsonUtility.FromJson<Statitics>(e.data);
             gameStats = msg;
+
+            UpdateStats();
         });
 
         io.On("player-position-change", (SocketIOEvent e) =>
@@ -84,6 +109,29 @@ public class GameState : MonoBehaviour
         });
 
         io.Connect();
+    }
+
+    private void UpdateStats()
+    {
+        if (allyKey == "one")
+        {
+            allyStats = gameStats.one;
+            enemyStats = gameStats.two;
+        }
+        else
+        {
+            allyStats = gameStats.two;
+            enemyStats = gameStats.one;
+        }
+
+        foreach (var player in allyStats.players)
+        {
+            if (player.name == playerName)
+            {
+                playerStats = player;
+                break;
+            }
+        }
     }
 
     public void emitLobbyEntered()
