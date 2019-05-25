@@ -19,7 +19,7 @@ public class GameState : MonoBehaviour
 
     public DateTime startedAt;
 
-    public Dictionary<string, GameObject> diedObjects;
+    public Dictionary<string, GameObject> diedObjects = new Dictionary<string, GameObject>();
 
     // Start is called before the first frame update
     void Awake()
