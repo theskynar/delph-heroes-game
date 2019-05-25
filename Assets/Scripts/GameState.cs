@@ -2,6 +2,7 @@
 using UnitySocketIO.Events;
 using UnityEngine.SceneManagement;
 using System;
+using System.Collections.Generic;
 
 public class GameState : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class GameState : MonoBehaviour
     public Statitics.Player playerStats;
 
     public DateTime startedAt;
+
+    public Dictionary<string, GameObject> diedObjects;
 
     // Start is called before the first frame update
     void Awake()
@@ -96,10 +99,15 @@ public class GameState : MonoBehaviour
 
                 if (item.attribute.life == 0)
                 {
-                    GameObject.Find(item.name).SetActive(false);
-                } else
+                    diedObjects[item.name] = GameObject.Find(item.name);
+                    diedObjects[item.name].SetActive(false);
+                }
+                else
                 {
-                    GameObject.Find(item.name).SetActive(true);
+                    if (diedObjects[item.name] != null)
+                    {
+                        diedObjects[item.name].SetActive(true);
+                    }
                 }
             }
 
