@@ -13,15 +13,7 @@ public class Player : MonoBehaviour
     }
 
     void FixedUpdate()
-    {
-        if (Input.GetKey(KeyCode.Q))
-        {
-        }
-        else if (Input.GetKey(KeyCode.W))
-        {
-        }
-
-        
+    {   
         character.PointClick(specs.name);
         character.Rotation();
         character.Move();
@@ -31,9 +23,12 @@ public class Player : MonoBehaviour
 
     public void UpdateLife()
     {
-        hpBar = GameObject.Find("HpBar");
-        var image = hpBar.GetComponent<Image>();
-        var health = (float) (specs.attribute.life / specs.attribute.originalLife);
-        image.fillAmount = health;
+        if (specs.name == GameState.instance.playerName)
+        {
+            hpBar = GameObject.Find("HpBar");
+            var image = hpBar.GetComponent<Image>();
+            var health = (float)(specs.attribute.life / specs.attribute.originalLife);
+            image.fillAmount = health;
+        }
     }
 }
