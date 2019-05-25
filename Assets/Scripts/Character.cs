@@ -13,26 +13,6 @@ public class Character : MonoBehaviour
     public Vector3 direction = new Vector3();
     public Vector3 position = new Vector3();
     public float speed = 2.0f;
-    private bool collided;
-
-    private void OnTriggerEnter2D(Collision co)
-    {
-        if (co.gameObject.tag != "Bullet")
-        {
-            collided = true;
-            Debug.Log("Colidiu");
-        }
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        Player enemy = other.gameObject.GetComponent<Player>();
-
-        if (enemy != null)
-        {
-            Debug.Log("Collded");
-        }
-    }
 
     public void Move()
     {
@@ -44,12 +24,12 @@ public class Character : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
         position = gameObject.transform.position;
 
-        if (Input.GetKey(KeyCode.Mouse0) && name == GameState.instance.playerName)
+        if (Input.GetKey(KeyCode.Mouse0) )
         {
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             target.z = 0;
 
-            GameState.instance.emitPlayerPositionChange(new Vector2(target.x, target.y));
+            //GameState.instance.emitPlayerPositionChange(new Vector2(target.x, target.y));
         }
 
         if (target != Vector3.zero && (target - position).magnitude >= .06)

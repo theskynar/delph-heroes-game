@@ -137,6 +137,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ba20c804ad22644ad73a9b143d8cbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  specs:
+    name: 
+    hero: 
+    attribute:
+      life: 0
+      originalLife: 0
+      damage: 0
+      criticalRate: 0
+      defense: 0
+      defenseRate: 0
+  character: {fileID: 0}
+  hpBar: {fileID: 0}
 --- !u!114 &45258470828423901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,13 +162,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 45258470828423898}
+  rb: {fileID: 45258470828423896}
   target: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 0}
   position: {x: 0, y: 0, z: 0}
   speed: 1
-  shotDelay: 1
-  bullet: {fileID: 7762710889228794420, guid: 2e2b28a6323bef34b944f1079bd8070e, type: 3}
-  rb: {fileID: 45258470828423896}
 --- !u!58 &1146979683
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -190,5 +200,5 @@ MonoBehaviour:
   firePoint: {fileID: 45258470828423894}
   cameras: {fileID: 6104306585651812400, guid: bb93dc98ee8303147848109911f10da7, type: 3}
   VFXs:
-  - {fileID: 1979048356021752, guid: d82846700d83cc34eb745126e8de58a6, type: 3}
-  - {fileID: 1574670682615188, guid: 1082783949a45e444b522891f3be173a, type: 3}
+  - {fileID: 1322074528313358, guid: ac171bbfbcc462049882df1438a48d38, type: 3}
+  - {fileID: 1962646870923850, guid: 4bf1ca0ef804d5d46aabecc803af6d06, type: 3}

@@ -15,13 +15,14 @@ GameObject:
   - component: {fileID: 2122693840517842854}
   - component: {fileID: 2122693840517842860}
   - component: {fileID: 5785167408845815314}
+  - component: {fileID: 424151528}
   m_Layer: 0
   m_Name: Cyrus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2122693840517842861
 Transform:
   m_ObjectHideFlags: 0
@@ -136,6 +137,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ba20c804ad22644ad73a9b143d8cbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  specs:
+    name: 
+    hero: 
+    attribute:
+      life: 0
+      originalLife: 0
+      damage: 0
+      criticalRate: 0
+      defense: 0
+      defenseRate: 0
+  character: {fileID: 0}
+  hpBar: {fileID: 0}
 --- !u!114 &2122693840517842860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,13 +162,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 2122693840517842859}
+  rb: {fileID: 2122693840517842857}
   target: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 0}
   position: {x: 0, y: 0, z: 0}
   speed: 1
-  shotDelay: 1
-  bullet: {fileID: 7762710889228794420, guid: 2e2b28a6323bef34b944f1079bd8070e, type: 3}
-  rb: {fileID: 2122693840517842857}
 --- !u!58 &5785167408845815314
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -172,3 +183,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.1}
   serializedVersion: 2
   m_Radius: 0.04
+--- !u!114 &424151528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122693840517842855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2eb83ec655d71b498b43c9ebccd8066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  use2D: 0
+  effectName: {fileID: 0}
+  firePoint: {fileID: 2122693840517842855}
+  cameras: {fileID: 0}
+  VFXs:
+  - {fileID: 1881642356963322, guid: f4371fba3cfa5dc438f3935246afee3e, type: 3}
+  - {fileID: 1665520805338514, guid: 39f36147c280e9343ba32b265be7fc49, type: 3}

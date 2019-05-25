@@ -22,7 +22,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5892910200121460489
 Transform:
   m_ObjectHideFlags: 0
@@ -137,6 +137,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ba20c804ad22644ad73a9b143d8cbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  specs:
+    name: 
+    hero: 
+    attribute:
+      life: 0
+      originalLife: 0
+      damage: 0
+      criticalRate: 0
+      defense: 0
+      defenseRate: 0
+  character: {fileID: 0}
+  hpBar: {fileID: 0}
 --- !u!114 &5892910200551581244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,13 +162,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 5892910200551581240}
+  rb: {fileID: 5892910200551581241}
   target: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 0}
   position: {x: 0, y: 0, z: 0}
   speed: 1
-  shotDelay: 0
-  bullet: {fileID: 7762710889228794420, guid: 2e2b28a6323bef34b944f1079bd8070e, type: 3}
-  rb: {fileID: 5892910200551581241}
 --- !u!58 &1273166743545114639
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -185,10 +195,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2eb83ec655d71b498b43c9ebccd8066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  use2D: 0
+  use2D: 1
   effectName: {fileID: 0}
   firePoint: {fileID: 5892910200551581245}
   cameras: {fileID: 6104306585651812400, guid: bb93dc98ee8303147848109911f10da7, type: 3}
   VFXs:
-  - {fileID: 1117804056975720, guid: 118a754c0d3d1b842bce8ff4892b0ef9, type: 3}
-  - {fileID: 1962646870923850, guid: a9e8464a76571d3439752b16f0e6f851, type: 3}
+  - {fileID: 1117804056975720, guid: b3ec103bbee9e3444bbad3edf11c7b9c, type: 3}
+  - {fileID: 1412052184533082, guid: 1b63b6d7ec1bcf649bdd88d01bfc932e, type: 3}
