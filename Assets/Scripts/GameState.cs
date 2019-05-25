@@ -87,6 +87,38 @@ public class GameState : MonoBehaviour
         io.On("game-players-update", (SocketIOEvent e) =>
         {
             PlayersInfo msg = JsonUtility.FromJson<PlayersInfo>(e.data);
+
+            foreach (var item in msg.one)
+            {
+                var playerObject = GameObject.Find(item.name);
+                var player = playerObject.GetComponent<Player>();
+                player.specs = item;
+
+                if (item.attribute.life == 0)
+                {
+                    GameObject.Find(item.name).SetActive(false);
+                } else
+                {
+                    GameObject.Find(item.name).SetActive(true);
+                }
+            }
+
+            foreach (var item in msg.two)
+            {
+                var playerObject = GameObject.Find(item.name);
+                var player = playerObject.GetComponent<Player>();
+                player.specs = item;
+
+                if (item.attribute.life == 0)
+                {
+                    GameObject.Find(item.name).SetActive(false);
+                }
+                else
+                {
+                    GameObject.Find(item.name).SetActive(true);
+                }
+            }
+
             playersInfo = msg;
         });
 
@@ -175,6 +207,16 @@ public class GameState : MonoBehaviour
 
         io.Emit("player-use-skill", JsonUtility.ToJson(msg));
     }
+
+    public void emitAttack(string target)
+    {
+        AttackMessage msg = new AttackMessage()
+        {
+            target = target
+        };
+
+        io.Emit("player-attack", JsonUtility.ToJson(msg));
+    }
 }
 
 [Serializable]
@@ -183,4 +225,10 @@ public class SkillMessage
     public int index;
     public Vector3 position;
     public string player;
+}
+
+[Serializable]
+public class AttackMessage
+{
+    public string target;
 }
