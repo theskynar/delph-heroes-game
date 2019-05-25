@@ -29,7 +29,7 @@ public class Character : MonoBehaviour
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             target.z = 0;
 
-            //GameState.instance.emitPlayerPositionChange(new Vector2(target.x, target.y));
+            GameState.instance.emitPlayerPositionChange(new Vector2(target.x, target.y));
         }
 
         if (target != Vector3.zero && (target - position).magnitude >= .06)

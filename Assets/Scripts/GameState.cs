@@ -108,6 +108,14 @@ public class GameState : MonoBehaviour
             player.character.PointClick(player.specs.name);
         });
 
+        io.On("player-use-skill", (SocketIOEvent e) =>
+        {
+            SkillMessage msg = JsonUtility.FromJson<SkillMessage>(e.data);
+            SpawnProjectilesScript projectile = GameObject.Find(msg.player).GetComponent<SpawnProjectilesScript>();
+
+            projectile.SpawnByEvent(msg.position, msg.index);
+        });
+
         io.Connect();
     }
 
@@ -156,8 +164,23 @@ public class GameState : MonoBehaviour
         io.Emit("player-position-change", JsonUtility.ToJson(position));
     }
 
-    public void emitUseSkill()
+    public void emitUseSkill(int index, Vector3 position)
     {
+        SkillMessage msg = new SkillMessage()
+        {
+            index = index,
+            position = position,
+            player = playerName
+        };
 
+        io.Emit("player-use-skill", JsonUtility.ToJson(msg));
     }
+}
+
+[Serializable]
+public class SkillMessage
+{
+    public int index;
+    public Vector3 position;
+    public string player;
 }

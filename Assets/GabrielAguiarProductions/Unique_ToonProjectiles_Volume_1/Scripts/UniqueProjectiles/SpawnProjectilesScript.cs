@@ -61,22 +61,36 @@ public class SpawnProjectilesScript : MonoBehaviour
         {
             timeToFire = Time.time + 1f / effectToSpawn.GetComponent<ProjectileMoveScript>().fireRate;
             effectToSpawn = VFXs[0];
-            SpawnVFX();
+
+            var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            GameState.instance.emitUseSkill(0, position);
+            SpawnVFX(position);
         }
         else if (Input.GetKey(KeyCode.W) && Time.time >= timeToFire)
         {
             timeToFire = Time.time + 1f / effectToSpawn.GetComponent<ProjectileMoveScript>().fireRate;
             effectToSpawn = VFXs[1];
-            SpawnVFX();
+
+            var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            GameState.instance.emitUseSkill(1, position);
+            SpawnVFX(position);
         }
     }
 
-    public void SpawnVFX()
+    public void SpawnVFX(Vector3 position)
     {
         GameObject vfx;
+        Quaternion rot = Quaternion.LookRotation(position - transform.position, Vector3.forward);
 
-        var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Quaternion rot = Quaternion.LookRotation(mousePosition - transform.position, Vector3.forward);
+        vfx = Instantiate(effectToSpawn, firePoint.transform.position, rot);
+    }
+
+    public void SpawnByEvent(Vector3 position, int index)
+    {
+        effectToSpawn = VFXs[index];
+        GameObject vfx;
+
+        Quaternion rot = Quaternion.LookRotation(position - transform.position, Vector3.forward);
 
         vfx = Instantiate(effectToSpawn, firePoint.transform.position, rot);
     }
