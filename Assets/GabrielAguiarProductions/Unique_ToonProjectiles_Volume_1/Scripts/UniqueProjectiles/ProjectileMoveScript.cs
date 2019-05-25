@@ -98,7 +98,7 @@ public class ProjectileMoveScript : MonoBehaviour
             var enemyTag = GameState.instance.allyKey == "one" ? "TeamTwo" : "TeamOne";
             if (co.gameObject.tag == enemyTag && !collided)
             {
-                if (GameState.instance.playerName != owner.specs.name)
+                if (GameState.instance.playerName != owner.specs.name && owner.specs.name != co.gameObject.name)
                 {
                     GameState.instance.emitAttack(co.gameObject.name);
                 }
