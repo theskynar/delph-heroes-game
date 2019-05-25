@@ -135,6 +135,7 @@ public class GameState : MonoBehaviour
                 else
                 {
                     playerObject.SetActive(true);
+                    diedObjects.Remove(item.name);
                 }
             }
 
